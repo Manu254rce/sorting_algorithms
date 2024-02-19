@@ -1,21 +1,5 @@
 # include "sort.h"
 
-/**
- * print_bubble - function that prints out the array after each
- * swap
- * @array: the data structure being worke on
- * @size: the size of the array
- */
-
-void print_bubble(int *array, size_t size)
-{
-	size_t k;
-
-	for (k = 0; k < size; k++)
-		printf("%d ", array[k]);
-
-	printf("\n");
-}
 
 /**
  * bubble_sort - function that sorts out elements in a
@@ -26,24 +10,21 @@ void print_bubble(int *array, size_t size)
 
 void bubble_sort(int *array, size_t size)
 {
-	int temp, swp;
+	int tmp;
 	size_t i, j;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		swp = 0;
 		for (j = 0; j < size - i - 1; j++)
 		{
 			if (array[j + 1] < array[j])
 			{
-				temp = array[j + 1];
-				array[j + 1] = array[j];
-				array[j] = temp;
+				tmp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = tmp;
 				swp = 1;
-				print_bubble(array, size);
+				print_array(array, size);
 			}
 		}
-		if (swp == 0)
-			break;
 	}
 }
