@@ -26,11 +26,12 @@ void print_bubble(int *array, size_t size)
 
 void bubble_sort(int *array, size_t size)
 {
-	int temp;
+	int temp, swp;
 	size_t i, j;
 
 	for (i = 0; i < size - 1; i++)
 	{
+		swp = 0;
 		for (j = 0; j < size - i - 1; j++)
 		{
 			if (array[j + 1] < array[j])
@@ -38,8 +39,11 @@ void bubble_sort(int *array, size_t size)
 				temp = array[j + 1];
 				array[j + 1] = array[j];
 				array[j] = temp;
+				swp = 1;
 				print_bubble(array, size);
 			}
 		}
+		if (swp == 0)
+			break;
 	}
 }
